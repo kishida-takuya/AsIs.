@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    protected $table = 'users';
+    
+    /**
+     * このユーザが所有する投稿。（ Diaryモデルとの関係を定義）
+     */
+    public function diaries()
+    {
+        return $this->hasMany(Diary::class);
+    }
+    
+    /**
+     * このユーザに関係するモデルの件数をロードする。
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('diaries');
+    }
 }

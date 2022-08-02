@@ -7,7 +7,17 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+use Illuminate\Support\Facades\Storage;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public function photoupload()
+    {
+      // バケットの`example`フォルダへアップロードする
+      $path = Storage::disk('s3')->putFile('example', $image, 'public');
+      // アップロードした画像のフルパスを取得
+      $user->image = Storage::disk('s3')->url($path);
+    }
 }
