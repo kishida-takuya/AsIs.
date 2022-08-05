@@ -12,7 +12,7 @@
                     </div>
                     <div>
                         {{-- 投稿内容 --}}
-                        <p class="mb-0"><img src="{{ $diary->photo()->url}}"></p>
+                        <p class="mb-0"><img src="{{ $diary->photo->url}}"></p>
                         <p class="mb-0">{!! nl2br(e($diary->content)) !!}</p>
                     </div>
                     <div>

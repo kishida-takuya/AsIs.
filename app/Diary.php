@@ -18,7 +18,7 @@ class Diary extends Model
     
     public function photo()
     {
-        //return $this->belongsTo(Photo::class);diary_id
-        return Photo::where('diary_id', $this->id)->first();
+        return $this->hasOne(Photo::class);
+        //return Photo::where('diary_id', $this->id)->first();
     }
 }
