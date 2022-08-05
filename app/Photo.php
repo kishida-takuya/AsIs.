@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Diary extends Model
+class Photo extends Model
 {
-    protected $fillable = ['content'];
+    protected $fillable = ['diary_id', 'url'];
 
     /**
      * この投稿を所有するユーザ。（ Userモデルとの関係を定義）
@@ -16,9 +16,8 @@ class Diary extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function photo()
+    public function diary()
     {
-        //return $this->belongsTo(Photo::class);diary_id
-        return Photo::where('diary_id', $this->id)->first();
+        return $this->belongsTo(Diary::class);
     }
 }

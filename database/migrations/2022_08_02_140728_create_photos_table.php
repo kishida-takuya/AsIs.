@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiariesTable extends Migration
+class CreatePhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateDiariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('diaries', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            
-            $table->string('content');
+            $table->unsignedBigInteger('diary_id');
+            $table->string('url');
             $table->timestamps();
-
-            // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('users');
             
+            // 外部キー制約
+            $table->foreign('diary_id')->references('id')->on('diaries');
             
         });
     }
@@ -34,6 +33,6 @@ class CreateDiariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diaries');
+        Schema::dropIfExists('photos');
     }
 }

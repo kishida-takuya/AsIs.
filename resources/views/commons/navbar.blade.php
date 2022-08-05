@@ -12,17 +12,14 @@
             <ul class="navbar-nav">
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
-                    <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            {{-- ユーザ一覧ページへのリンク --}}
-                            <li class="nav-item">{!! link_to_route('users.index', 'Users', [], ['class' => 'nav-link']) !!}</li>
-                            {{-- 日記一覧へのリンク--}}
-                            <li class="nav-item"></li>
-                            {{-- ログアウトへのリンク --}}
-                            <li class="nav-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
-                        </ul>
+                    <li>
+                        {{-- ユーザ一覧ページへのリンク --}}
+                        <li class="nav-item">{!! link_to_route('users.index', 'Users', [], ['class' => 'nav-link']) !!}</li>
+                        {{-- 日記一覧へのリンク--}}
+                        <li class="nav-item">{!! link_to_route('diaries.index', 'Diaries', [], ['class' => 'nav-link']) !!}</li>
+                        {{-- ログアウトへのリンク --}}
+                        <li class="nav-item">{!! link_to_route('logout.get', 'Logout', [], ['class' => 'nav-link']) !!}</li>
+                        
                     </li>
                 @else
                     {{-- ユーザ登録ページへのリンク --}}

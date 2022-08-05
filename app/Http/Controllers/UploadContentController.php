@@ -14,6 +14,7 @@ class UploadContentController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, ['myfile' => 'required|image']);
 
         $image = $request->file('myfile');
