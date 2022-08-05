@@ -21,7 +21,7 @@ class CreatePhotosTable extends Migration
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('diary_id')->references('id')->on('diaries');
+            $table->foreign('diary_id')->references('id')->on('diaries')->onDelete('cascade');
             
         });
     }
