@@ -19,6 +19,6 @@ class Diary extends Model
     public function photo()
     {
         return $this->hasOne(Photo::class);
-        //return Photo::where('diary_id', $this->id)->first();
+        
     }
 }
